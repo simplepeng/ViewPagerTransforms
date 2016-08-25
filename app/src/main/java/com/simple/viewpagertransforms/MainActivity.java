@@ -9,8 +9,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.simple.transformslibrary.CardSlideTransformer;
+import com.simple.transformslibrary.Flip3DTransform;
+import com.simple.transformslibrary.FlipHorizontalTransformer;
 import com.simple.transformslibrary.TransformUtil;
-import com.simple.transformslibrary.ZoomOutSlideTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -22,6 +24,10 @@ public class MainActivity extends AppCompatActivity {
     private int[] colors = {Color.parseColor("#00BFFF"), Color.parseColor("#FF1493")
             , Color.parseColor("#8B0000"), Color.parseColor("#008B8B")
             , Color.parseColor("#8B008B")};
+    private TextView mTextview;
+    private String[] transformNames = {"卡片滑动", "水平翻转", "3D翻转", "4", "5", "6", "7"};
+    private Class[] clazzArray = {CardSlideTransformer.class, FlipHorizontalTransformer.class
+            , Flip3DTransform.class};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mViewPager = (ViewPager) findViewById(R.id.viewPager);
+        mTextview = (TextView) findViewById(R.id.textview);
 
         for (int i = 0; i < 5; i++) {
             View rootView = View.inflate(MainActivity.this, R.layout.item_pager, null);
@@ -38,7 +45,16 @@ public class MainActivity extends AppCompatActivity {
             viewList.add(rootView);
         }
 
-        TransformUtil.reverse(mViewPager, new ZoomOutSlideTransformer());
+        int position = 0;
+        try {
+            TransformUtil.reverse(mViewPager,
+                    (ViewPager.PageTransformer) clazzArray[position].newInstance());
+            mTextview.setText(transformNames[position]);
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
         mViewPager.setAdapter(new MyAdapter());
     }
 

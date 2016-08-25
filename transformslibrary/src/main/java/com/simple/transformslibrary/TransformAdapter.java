@@ -46,6 +46,11 @@ public abstract class TransformAdapter implements ViewPager.PageTransformer {
 
     }
 
+    /**
+     *
+     * @param view left and right view both callback
+     * @param position [-1,1]
+     */
     public void onTransform(View view, float position) {
 
     }

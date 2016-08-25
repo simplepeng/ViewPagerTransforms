@@ -3,7 +3,7 @@ package com.simple.transformslibrary;
 import android.view.View;
 
 /**
- *
+ *  水平翻转
  */
 public class FlipHorizontalTransformer extends TransformAdapter {
 

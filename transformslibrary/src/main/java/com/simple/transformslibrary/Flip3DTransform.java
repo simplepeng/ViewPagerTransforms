@@ -5,7 +5,7 @@ import android.view.View;
 /**
  * 3d翻转
  */
-public class Like3DReversalTransform extends TransformAdapter {
+public class Flip3DTransform extends TransformAdapter {
 
     @Override
     public void onRightScorlling(View view, float position) {
