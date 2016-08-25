@@ -3,20 +3,24 @@ package com.simple.transformslibrary;
 import android.view.View;
 
 /**
- * 3d翻转
+ *
  */
-public class Like3DReversalTransform extends TransformAdapter {
+public class ZoomOutTransform extends TransformAdapter {
 
     @Override
     public void onRightScorlling(View view, float position) {
-        view.setPivotX(0);
-        view.setRotationY(90f * position);
+
     }
 
     @Override
     public void onLeftScorlling(View view, float position) {
-        view.setPivotX(view.getWidth());
-        view.setRotationY(90f * position);
+        view.setScaleX(1 + position);
+        view.setScaleY(1 + position);
+    }
+
+    @Override
+    public void onCenterIdle(View view) {
+
     }
 
 }

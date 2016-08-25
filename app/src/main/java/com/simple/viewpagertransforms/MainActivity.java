@@ -1,16 +1,16 @@
 package com.simple.viewpagertransforms;
 
 import android.graphics.Color;
+import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.simple.transformslibrary.Like3DReversalTransform;
+import com.simple.transformslibrary.TransformUtil;
+import com.simple.transformslibrary.ZoomOutSlideTransformer;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +19,9 @@ public class MainActivity extends AppCompatActivity {
 
     private ViewPager mViewPager;
     private List<View> viewList = new ArrayList<>();
-    private int[] colors = {Color.BLUE, Color.GREEN, Color.GRAY, Color.BLACK, Color.RED,};
+    private int[] colors = {Color.parseColor("#00BFFF"), Color.parseColor("#FF1493")
+            , Color.parseColor("#8B0000"), Color.parseColor("#008B8B")
+            , Color.parseColor("#8B008B")};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
             viewList.add(rootView);
         }
 
-        mViewPager.setPageTransformer(false,new Like3DReversalTransform());
+        TransformUtil.reverse(mViewPager, new ZoomOutSlideTransformer());
         mViewPager.setAdapter(new MyAdapter());
     }
 
