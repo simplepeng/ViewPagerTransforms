@@ -2,9 +2,6 @@ package com.simple.transformslibrary;
 
 import android.support.v4.view.ViewPager;
 
-/**
- *
- */
 public class TransformUtil {
 
     public static void reverse(ViewPager viewPager, ViewPager.PageTransformer transformer) {

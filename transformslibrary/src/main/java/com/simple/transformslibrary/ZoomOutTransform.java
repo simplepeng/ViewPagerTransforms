@@ -3,7 +3,7 @@ package com.simple.transformslibrary;
 import android.view.View;
 
 /**
- *
+ * 缩放
  */
 public class ZoomOutTransform extends TransformAdapter {
 

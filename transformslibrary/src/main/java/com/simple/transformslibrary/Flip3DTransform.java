@@ -2,9 +2,6 @@ package com.simple.transformslibrary;
 
 import android.view.View;
 
-/**
- * 3d翻转
- */
 public class Flip3DTransform extends TransformAdapter {
 
     @Override

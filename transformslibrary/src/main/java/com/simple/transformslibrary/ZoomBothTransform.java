@@ -2,9 +2,6 @@ package com.simple.transformslibrary;
 
 import android.view.View;
 
-/**
- *
- */
 public class ZoomBothTransform extends TransformAdapter {
 
     @Override
@@ -17,11 +14,6 @@ public class ZoomBothTransform extends TransformAdapter {
     public void onLeftScorlling(View view, float position) {
         view.setScaleX(1 + position / 2);
         view.setScaleY(1 + position / 2);
-    }
-
-    @Override
-    public void onCenterIdle(View view) {
-
     }
 
 }

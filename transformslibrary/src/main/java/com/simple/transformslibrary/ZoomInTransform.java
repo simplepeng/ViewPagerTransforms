@@ -13,9 +13,4 @@ public class ZoomInTransform extends TransformAdapter {
         view.setScaleY(1 - position);
     }
 
-    @Override
-    public void onLeftScorlling(View view, float position) {
-
-    }
-
 }

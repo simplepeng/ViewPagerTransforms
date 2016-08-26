@@ -4,9 +4,6 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.View;
 
-/**
- * PageTransformer 基类
- */
 public abstract class TransformAdapter implements ViewPager.PageTransformer {
 
     private boolean debug = true;

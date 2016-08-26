@@ -2,9 +2,6 @@ package com.simple.transformslibrary;
 
 import android.view.View;
 
-/**
- *
- */
 public class RotationTransform extends TransformAdapter {
 
 
