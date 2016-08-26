@@ -9,9 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.simple.transformslibrary.CardSlideTransformer;
-import com.simple.transformslibrary.Flip3DTransform;
-import com.simple.transformslibrary.FlipHorizontalTransformer;
+import com.simple.transformslibrary.StackZoomInTransform;
 import com.simple.transformslibrary.TransformUtil;
 
 import java.util.ArrayList;
@@ -25,9 +23,7 @@ public class MainActivity extends AppCompatActivity {
             , Color.parseColor("#8B0000"), Color.parseColor("#008B8B")
             , Color.parseColor("#8B008B")};
     private TextView mTextview;
-    private String[] transformNames = {"卡片滑动", "水平翻转", "3D翻转", "4", "5", "6", "7"};
-    private Class[] clazzArray = {CardSlideTransformer.class, FlipHorizontalTransformer.class
-            , Flip3DTransform.class};
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,16 +41,8 @@ public class MainActivity extends AppCompatActivity {
             viewList.add(rootView);
         }
 
-        int position = 0;
-        try {
-            TransformUtil.reverse(mViewPager,
-                    (ViewPager.PageTransformer) clazzArray[position].newInstance());
-            mTextview.setText(transformNames[position]);
-        } catch (InstantiationException e) {
-            e.printStackTrace();
-        } catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
+        TransformUtil.reverse(mViewPager,new StackZoomInTransform());
+
         mViewPager.setAdapter(new MyAdapter());
     }
 
