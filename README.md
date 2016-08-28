@@ -1,7 +1,7 @@
 # ViewPagerTransforms
 
 
-###Inculde
+### Inculde
 * Gradle
 
 ```
@@ -19,7 +19,15 @@ compile 'com.simplepeng.library:transformslibrary:1.0.0'
 </dependency>
 ```
 
-###View Something
+### useage
+```
+TransformUtil.reverse(mViewPager,new StackZoomInTransform());
+```
+or
+```
+TransformUtil.forward(mViewPager,new StackZoomInTransform());
+```
+### View
 
 * CardSlideTransformer
 
@@ -42,9 +50,11 @@ compile 'com.simplepeng.library:transformslibrary:1.0.0'
 
 ![](https://raw.githubusercontent.com/simplepeng/ViewPagerTransforms/master/gifs/zoomin.gif)
 
-###Custom
+* other view library code
 
-继承TransformAdapter然后自定view的动画即可，例如：
+### Custom
+
+extends TransformAdapter to custom view animations,for example:
 ```
 public class ZoomBothTransform extends TransformAdapter {
 
@@ -62,7 +72,7 @@ public class ZoomBothTransform extends TransformAdapter {
 
 }
 ```
-TransformAdapter有四个方法可供子类重写，看自己所需调用。
+TransformAdapter has 4 can override method
 * onRightScorlling
 ```
 /**
