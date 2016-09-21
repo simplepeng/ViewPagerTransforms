@@ -1,5 +1,6 @@
 package com.simple.viewpagertransforms;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
@@ -8,8 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
-import com.simple.transformslibrary.StackZoomInTransform;
+import com.simple.transformslibrary.FlipHorizontalTransformer;
 import com.simple.transformslibrary.TransformUtil;
 
 import java.util.ArrayList;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
             , Color.parseColor("#8B0000"), Color.parseColor("#008B8B")
             , Color.parseColor("#8B008B")};
     private TextView mTextview;
+    private int curIndex;
 
 
     @Override
@@ -34,14 +37,22 @@ public class MainActivity extends AppCompatActivity {
         mTextview = (TextView) findViewById(R.id.textview);
 
         for (int i = 0; i < 5; i++) {
+            curIndex = i;
             View rootView = View.inflate(MainActivity.this, R.layout.item_pager, null);
             rootView.setBackgroundColor(colors[i]);
             TextView textView = (TextView) rootView.findViewById(R.id.pager_tv);
             textView.setText(String.valueOf(i + 1));
-            viewList.add(rootView);
+            textView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Toast.makeText(MainActivity.this, ((TextView) v).getText(), Toast.LENGTH_SHORT)
+                            .show();
+                }
+            });
+            viewList.add(i, rootView);
         }
 
-        TransformUtil.reverse(mViewPager,new StackZoomInTransform());
+        TransformUtil.reverse(mViewPager, new FlipHorizontalTransformer());
 
         mViewPager.setAdapter(new MyAdapter());
     }
@@ -69,5 +80,9 @@ public class MainActivity extends AppCompatActivity {
             container.removeView(viewList.get(position));
         }
 
+    }
+
+    public void jumpFragment(View view) {
+        startActivity(new Intent(MainActivity.this, FragmentTransActivity.class));
     }
 }
